@@ -15,8 +15,8 @@ def gen_data(n, m=False):  # Generates linear separable data by a slope (m).
 
 
 def bubble_sort(matrix):
-    for numPasada in range(matrix.shape[0] - 1, 0, -1):
-        for i in range(numPasada):
+    for past_num in range(matrix.shape[0] - 1, 0, -1):
+        for i in range(past_num):
             if matrix[i][0] > matrix[i + 1][0]:
                 temp = matrix[i][0]
                 aux = matrix[i][1]
