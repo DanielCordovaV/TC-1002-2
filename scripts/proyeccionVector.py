@@ -13,21 +13,20 @@ from random import randrange as rr
 import random
 
 
-def genData(n, seed=1, m=False):  # Genera data linearmente separable por una pendiente (m)
-    np.random.seed(seed)
-    if (m == False):
+def gen_data(n, m=False):  # Genera data linearmente separable por una pendiente (m)
+    np.random.seed()
+    if not m:
         m = (rr(20) + 1) / 10
-    X = np.random.random((n, 2))
-    y = ((X[:, 1] / X[:, 0]) > m) * 1
-    X = (X - 0.5) * 2
-    return [X, y]
+    x = np.random.random((n, 2))
+    y = ((x[:, 1] / x[:, 0]) > m) * 1
+    x = (x - 0.5) * 2
+    return [x, y]
 
 
-def graphPoints(X, y):  # Grafica los puntos y los puntos proyectados
-    for i in range(0, X.shape[0]):
-        p = X[i, 0:2]
-        # p2 = Xp[i,0:2]
-        if (y[i]):
+def graph_points(x, y):  # Grafica los puntos y los puntos proyectados
+    for i in range(0, x.shape[0]):
+        p = x[i, 0:2]
+        if y[i]:
             plt.scatter(p[0], p[1], color="red", s=4)
         else:
             plt.scatter(p[0], p[1], color="black", s=4)
@@ -36,7 +35,7 @@ def graphPoints(X, y):  # Grafica los puntos y los puntos proyectados
     plt.show()
 
 
-def randomVector():
+def random_vector():
     vec = (np.array([random.randint(-5, 5), random.randint(-5, 5)]))
     plt.quiver(0, 0, vec[0], vec[1], color="black", angles='xy', scale_units='xy', scale=5)
     plt.xlim(-1, 1)
@@ -45,15 +44,19 @@ def randomVector():
     return vec
 
 
-def proyectPoints(x, y, vec):
-    proyeccion = []
+def project_points(x, y, vec):
+    projection = []
     for i in x:
         p = np.dot(vec, i) / (la.norm(vec) ** 2) * vec
-        proyeccion.append(p)
-    proyeccion = np.array(proyeccion)
-    graphPoints(proyeccion, y)
+        projection.append(p)
+    projection = np.array(projection)
+    graph_points(projection, y)
 
 
-[x, y] = genData(30)
-graphPoints(x, y)
-proyectPoints(x, y, randomVector())
+def main():
+    [x, y] = gen_data(30)
+    graph_points(x, y)
+    project_points(x, y, random_vector())
+
+
+main()
