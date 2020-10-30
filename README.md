@@ -1,8 +1,11 @@
 # K-Nearest Neighbors(KNN)
-## ¿Qué es?
-K-Nearest Neighbors es un:
-- **Algoritmo de aprendizaje supervisado** 
-- **No parametrico**, no hace suposición sobre el patrón de distribución de datos.
-- **Lazy Algorithm**, sólo guarda las instancias, no construye ningún modelo.
-- **Local**, asume que la clase de un dato depende sólo de los k vecinos mas cercanos.
-- **Sencillo**
+K in KNN is the number of nearest neighbors considered for assigning a label to the current point.
+K is an extremely important parameter and choosing the value of K is the most critical problem when working with the KNN algorithm.  
+## What is it?
+K-Nearest Neighbors is an:
+- **Supervised Machine Learning Algorithm** 
+- **No parametric**, no assumption about the distribution of data.
+- **Lazy Learning Algorithm**, It does not have a training phase but rather memorizes the training data set. 
+- **Local**, it assumes that the class of a data depends only on the k closest neighbors. 
+- **Simple** 
+
